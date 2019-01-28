@@ -21,7 +21,7 @@ import lombok.AccessLevel;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity{
 
     @Id
     @GeneratedValue
@@ -62,9 +62,11 @@ public class Posts {
 // @NoArgsConstructor
 //	기본 생성자 자동 추가
 //	Entity 클래스를 프로젝트 코드상에서 기본생성자로 생성하는 것은 막되, 
-//			JPA에서 Entity 클래스를 생성하는것은 허용하기 위해 추가
+//			JPA에서 Entity 클래스를 생성하는 것은 허용하기 위해 추가
 // @Builder 
 //	해당 클래스의 빌더패턴 클래스를 생성
 //	생성자 상단에 선언시, 생성자에 포함된 필드만 빌더에 포함
+//	채워야할 피드가 무엇인지 명확히 지정할 수 없는 생성자와는 달리,
+//	어느 필드에 어떤 값을 채워야 할지 명확하게 인지 가능
 
 

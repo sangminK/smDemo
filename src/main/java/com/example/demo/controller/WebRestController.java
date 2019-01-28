@@ -17,17 +17,20 @@ import lombok.AllArgsConstructor;
 public class WebRestController {
 	
 	private PostsRepository postsRepository;
+	// -> @Autowired가 없음
 	
 	
 	//@RequestMapping(value="/hello", method=RequestMethod.GET)
 	@GetMapping("/hello")
 	public String hello() {
-		return "Hello World! -from WebRestController";
+		return "Hello World! - from WebRestController";
 	}
 	
 	@PostMapping("/posts")
+	//@RequestMapping(value="/posts", method=RequestMethod.POST)
 	public void savePosts(@RequestBody PostsSaveRequestDto dto) {
 		postsRepository.save(dto.toEntity());
+		//return "success";
 	}
 
 }
@@ -40,3 +43,7 @@ public class WebRestController {
 //				모든 필드를 인자값으로 하는 생성자를 Lombok의 @AllArgsConstructor이 대신 생성
 //				장점 -> 의존성 관계가 변경될때마다 생성자 코드를 계속해서 수정하는 번거로움 해결
 
+// 스프링 프레임웤에서 Bean을 주입받는 방식
+// 1. @Autowired
+// 2. setter
+// 3. 생성자

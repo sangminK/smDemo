@@ -1,9 +1,10 @@
 package com.example.demo.domain;
 
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.After;
@@ -30,6 +31,7 @@ public class PostsRepositoryTest {
 
 	@Test
 	public void 게시글저장_불러오기() {
+
 		// given - 테스트 기반 환경을 구축하는 단계
 		postsRepository.save(Posts.builder().title("테스트 게시글").content("테스트 본문").author("jojoldu@gmail.com").build());
 
@@ -42,8 +44,21 @@ public class PostsRepositoryTest {
 		assertThat(posts.getContent(), is("테스트 본문"));
 	}
 
+	@Test
+	public void BaseTimeEntity_등록() {
+		// given
+		LocalDateTime now = LocalDateTime.now();
+		postsRepository.save(Posts.builder().title("테스트 게시글").content("테스트 본문").author("jojoldu@gmail.com").build());
+		// when
+		List<Posts> postsList = postsRepository.findAll();
+
+		// then
+		Posts posts = postsList.get(0);
+		assertTrue(posts.getCreatedDate().isAfter(now));
+		assertTrue(posts.getModifiedDate().isAfter(now));
+	}
+
 }
 
 // given, when, then은 BDD(Behaviour-Driven Development)에서 사용하는 용어
 // JUnit에선 이를 명시적으로 지원해주지 않아 주석으로 표현
-
