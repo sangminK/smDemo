@@ -2,6 +2,7 @@ package com.example.demo.domain;
 
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,7 +11,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import lombok.AccessLevel;
+
+
+
+// posts ===> 게시물
 
 
 // 실제 DB의 테이블과 매칭될 클래스 -> Entity 클래스
@@ -20,6 +26,7 @@ import lombok.AccessLevel;
 // protected Post() { }
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Setter
 @Entity
 public class Posts extends BaseTimeEntity{
 

@@ -1,7 +1,11 @@
 package com.example.demo.controller;
 
+import java.util.*;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.domain.PostsRepository;
 import com.example.demo.dto.PostsSaveRequestDto;
+import com.example.demo.domain.Posts;
 
 import lombok.AllArgsConstructor;
 
@@ -26,13 +31,63 @@ public class WebRestController {
 		return "Hello World! - from WebRestController";
 	}
 	
-	@PostMapping("/posts")
+	// ********** insert **********************************************************
+	@PostMapping("/posts/insert")
 	//@RequestMapping(value="/posts", method=RequestMethod.POST)
 	public void savePosts(@RequestBody PostsSaveRequestDto dto) {
+		// Entity 클래스(Posts)와 controller에서 쓸 DTO는 분리해서 사용!@
 		postsRepository.save(dto.toEntity());
 		//return "success";
 	}
 	
+	// ********** read all **********************************************************
+	@GetMapping("/posts/read-all")
+	public List<Posts> getAllPosts() {
+		return postsRepository.findAll();
+	}
+	
+	
+	// ********** read one **********************************************************
+	@GetMapping("/posts/read-one/{id}")
+	public Optional<Posts> getOnePosts(@PathVariable long id) {
+		return postsRepository.findById(id);
+	}
+	
+	
+	// ********** update **********************************************************
+	@PutMapping("/posts/update-title/{id}")
+	public void updateTitle(@PathVariable long id, @RequestBody PostsSaveRequestDto dto) {
+		// update할 값을 인자로 보내주는 것이 아니라 insert할 때처럼
+		// id 빼고 dto로 set__해줌
+		// 컨트롤러에서 서비스로 dto를 넘겨주고, 거기에서 
+		// ex) budget.setBudgetType(dto.getBudgetType());
+		
+		
+		// 1. Posts에 @setter를 추가했을 때
+		Posts posts = postsRepository.getOne(id);
+		posts.setTitle(dto.getTitle());	
+		postsRepository.save(posts);
+		
+		
+		// 2. toBuilder 사용
+//		Posts p1 = Posts.builder().build();
+//		p1.toBuilder().title(dto.getTitle()).build();
+//		postsRepository.save(p1);
+		// https://stackoverflow.com/questions/47069561/build-an-object-from-an-existing-one-using-lombok
+		
+		
+		
+		// 3. with__() 사용
+
+	}
+
+	
+	// ********** delete **********************************************************
+	@PostMapping("/posts/delete/{id}")
+	public String deletePosts(@PathVariable long id) {
+		postsRepository.deleteById(id);
+		return "delete Posts complete";
+	}
 	
 
 }

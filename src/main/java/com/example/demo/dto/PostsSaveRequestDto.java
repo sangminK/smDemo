@@ -15,13 +15,18 @@ public class PostsSaveRequestDto {
     private String content;
     private String author;
 
-    public Posts toEntity(){
+    public Posts toEntity() {
         return Posts.builder()
                 .title(title)
                 .content(content)
                 .author(author)
                 .build();
     }
+    
+//    public Posts setTitle(String paramTitle) {
+//    	this.title = paramTitle;
+//    	return Posts.builder().title(title).build();
+//    }
 }
 
 // Controller에서 @RequestBody로 외부에서 데이터를 받는 경우엔 [기본생성자 + set메소드]를 
@@ -33,3 +38,4 @@ public class PostsSaveRequestDto {
 //		Entity 클래스가 변경되면 여러 클래스에 영향을 끼치게 되는 반면 Request와 Response용
 //		DTO는 View를 위한 클래스라 자주 변경이 필요
 //		View Layer와 DB Layer를 철저하게 역할 분리
+
