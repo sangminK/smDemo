@@ -3,7 +3,11 @@ package com.example.demo.dto;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.domain.User;
 
@@ -38,14 +42,18 @@ public interface UserDao extends JpaRepository<User, Integer> {
 
 	
 	// 1. @Query 사용(@Query, @Transactional, @Modifying)
-//	@Transactional
-//	@Modifying
-//	@Query("DELETE FROM posts WHERE id = :id AND user_id = :user_id")
-//	void deleteByIdAndUserId(@Param("id") Long id, @Param("user_id") Long user_id);
+	// 1-1. status=N 인, User
+	@Transactional
+	@Modifying
+	@Query("SELECT u FROM User u WHERE u.status = ?1")
+	List<User> selectByStatus(@Param("status") Integer status);
+	
+	// 1-2. 
+	
 
 	
 	// 2. 추가 조회 조건
-	// 2-1. salary가 N일때, user_name의 내림차순(desc)
+	// 2-1. salary가 N일때, name의 내림차순(desc)
 	List<User> findBySalaryOrderByNameDesc(Integer salary);
 	
 	// 2-2. 

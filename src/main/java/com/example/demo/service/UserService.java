@@ -48,5 +48,14 @@ public class UserService {
     public void deleteUser(int id) {
     	this.userDao.deleteById(id);
     }
+    
+    // ***** 추가
+    public List<User> findBySalaryOrderByNameDesc(int salary) {
+    	return this.userDao.findBySalaryOrderByNameDesc(salary);
+    }
+    
+    public List<User> selectByStatus(int status) {
+    	return this.userDao.selectByStatus(status);
+    }
 
 }

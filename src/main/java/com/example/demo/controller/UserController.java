@@ -63,4 +63,22 @@ public class UserController {
     	return "delete complete";
     }
     
+    // **********************************************************************************
+    // @Query & 추가 조회 조건
+    
+    // 1
+    // status가 N인 User
+    @RequestMapping(value = "/status/{status}")
+    public List<User> selectByStatus(@PathVariable int status) {
+    	return userService.selectByStatus(status);
+    }
+    
+    
+    // 2
+    // salary가 N일때, name의 내림차순(desc)
+    @RequestMapping(value = "/find-salary-order-name-desc/{salary}")
+    public List<User> findBySalaryOrderByNameDesc(@PathVariable int salary) {
+    	return userService.findBySalaryOrderByNameDesc(salary);
+    }
+    
 }
