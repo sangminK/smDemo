@@ -49,7 +49,10 @@ public interface UserDao extends JpaRepository<User, Integer> {
 	List<User> selectByStatus(@Param("status") Integer status);
 	
 	// 1-2. 
-	
+	@Transactional
+	@Modifying
+	@Query("SELECT u FROM User u WHERE u.salary = ?1")
+	List<User> selectBySalary(@Param("salary") Integer salary);
 
 	
 	// 2. 추가 조회 조건

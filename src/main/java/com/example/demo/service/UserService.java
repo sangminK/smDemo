@@ -54,6 +54,10 @@ public class UserService {
     	return this.userDao.findBySalaryOrderByNameDesc(salary);
     }
     
+    public List<User> selectBySalary(int salary) {
+    	return this.userDao.selectBySalary(salary);
+    }
+    
     public List<User> selectByStatus(int status) {
     	return this.userDao.selectByStatus(status);
     }

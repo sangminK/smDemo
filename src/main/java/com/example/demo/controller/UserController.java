@@ -73,6 +73,12 @@ public class UserController {
     	return userService.selectByStatus(status);
     }
     
+    // salary가 N인 User
+    @RequestMapping(value = "/salary/{salary}")
+    public List<User> selectBySalary(@PathVariable int salary) {
+    	return userService.selectBySalary(salary);
+    }
+    
     
     // 2
     // salary가 N일때, name의 내림차순(desc)
