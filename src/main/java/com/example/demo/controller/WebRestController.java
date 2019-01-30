@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.domain.PostsRepository;
 import com.example.demo.dto.PostsSaveRequestDto;
@@ -23,6 +24,19 @@ public class WebRestController {
 	
 	private PostsRepository postsRepository;
 	// -> @Autowired가 없음
+	
+	@RequestMapping(value = "/")
+	public ModelAndView root() {
+		ModelAndView mv = new ModelAndView("viewtest");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/test")
+	public ModelAndView test() {
+		ModelAndView mv = new ModelAndView("test/test2");
+		
+		return mv;
+	}
 	
 	
 	//@RequestMapping(value="/hello", method=RequestMethod.GET)
