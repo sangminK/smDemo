@@ -9,7 +9,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER_TABLE")
-public class User {
+public class User extends BaseTimeEntity {
+	
     @Column(name = "ID")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,11 +21,15 @@ public class User {
 
     @Column(name = "USER_SALARY", nullable = true, length = 10)
     private Integer salary;
+    
+    @Column
+    private Integer status;
 
 
-    public User(String name, Integer salary) {
+    public User(String name, Integer salary, Integer status) {
         this.name = name;
         this.salary = salary;
+        this.status = status;
     }
     
     protected User() {
@@ -54,6 +59,14 @@ public class User {
     public void setSalary(Integer salary) {
         this.salary = salary;
     }
+    
+    public Integer getStatus() {
+    	return status;
+    }
+    
+    public void setStatus(Integer status) {
+    	this.status = status;
+    }
 
     @Override
     public String toString() {
@@ -61,6 +74,7 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", salary=" + salary +
+                ", status=" + status +
                 '}';
     }
 }

@@ -33,7 +33,7 @@ public class PostsRepositoryTest {
 	public void 게시글저장_불러오기() {
 
 		// given - 테스트 기반 환경을 구축하는 단계
-		postsRepository.save(Posts.builder().title("테스트 게시글").content("테스트 본문").author("jojoldu@gmail.com").build());
+		postsRepository.save(Posts.builder().title("테스트 게시글").content("테스트 본문").build());
 
 		// when - 테스트 하고자 하는 행위 선언(여기선 Posts가 DB에 insert 되는 것을 확인하기 위함)
 		List<Posts> postsList = postsRepository.findAll();
@@ -48,7 +48,7 @@ public class PostsRepositoryTest {
 	public void BaseTimeEntity_등록() {
 		// given
 		LocalDateTime now = LocalDateTime.now();
-		postsRepository.save(Posts.builder().title("테스트 게시글").content("테스트 본문").author("jojoldu@gmail.com").build());
+		postsRepository.save(Posts.builder().title("테스트 게시글").content("테스트 본문").build());
 		// when
 		List<Posts> postsList = postsRepository.findAll();
 

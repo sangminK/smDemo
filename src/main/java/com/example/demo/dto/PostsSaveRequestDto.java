@@ -13,13 +13,14 @@ public class PostsSaveRequestDto {
 
     private String title;
     private String content;
-    private String author;
+    private String name;
+    private Long user_id;
 
     public Posts toEntity() {
         return Posts.builder()
                 .title(title)
                 .content(content)
-                .author(author)
+                .user_id(user_id)
                 .build();
     }
     

@@ -19,6 +19,7 @@ import lombok.AccessLevel;
 // posts ===> 게시물
 
 
+
 // 실제 DB의 테이블과 매칭될 클래스 -> Entity 클래스
 // JPA를 사용하면, DB 데이터에 작업할 경우 실제 쿼리를 날리기 보다는, 
 // 이 Entity 클래스의 수정을 통해 작업
@@ -39,14 +40,15 @@ public class Posts extends BaseTimeEntity{
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
-
-    private String author;
+    
+    @Column(nullable = false)
+    private Long user_id;
 
     @Builder
-    public Posts(String title, String content, String author) {
+    public Posts(String title, String content, Long user_id) {
         this.title = title;
         this.content = content;
-        this.author = author;
+        this.user_id = user_id;
     }
 }
 
