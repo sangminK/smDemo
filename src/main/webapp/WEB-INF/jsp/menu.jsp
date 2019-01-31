@@ -23,9 +23,9 @@
 	<script type="text/javascript">
 	
 
-	// 여긴 jQuery@@@@@@@@@@@@@@@
+	// 여긴 jQuery *********************************************************
 	
-	// javascript 로도 해보기@@@@@@@@@@@@@@@@@@@
+	// javascript 로도 해보기 **********************************************
 	
 	$(document).ready(function() {
 		// 사용자 조회 버튼
@@ -42,8 +42,8 @@
 		
 		function fn_openUserList() {
 			var comSubmit = new ComSubmit();
-
-
+			comSubmit.setUrl("<c:url value='/user/list' />");
+			comSubmit.submit();
 		}
 		
 		function fn_openPostList() {

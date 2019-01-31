@@ -13,7 +13,7 @@
 <h1>POSTS LIST</h1>
 
 
-<table class="post_list">
+<table class="post_list" border="1">
 		<colgroup>
 			<col width="10%" />
 			<col width="*" />
@@ -25,7 +25,7 @@
 				<th scope="col">글번호</th>
 				<th scope="col">제목</th>
 				<th scope="col">내용</th>
-				<th scope="col">작성자ID</th>
+				<th scope="col">작성자ID(번호)</th>
 				<th scope="col">작성일</th>
 				<th scope="col">수정일</th>
 			</tr>
@@ -51,15 +51,17 @@
 							<td>${row.id }</td>
 							<!-- 제목에 a태그를 넣어서 링크 가능하게 -->
 							<td class="title"><a href="#this" name="title">${row.title }</a>
-								<input type="hidden" id="IDX" value="${row.title }"></td>
+								<input type="hidden" id="id" value="${row.id }"></td>
 							<td>${row.content }</td>
 							<td>${row.user_id }</td>
+							<td>${row.createdDate }</td>
+							<td>${row.modifiedDate }</td>
 						</tr>
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
 					<tr>
-						<td colspan="4">조회된 결과가 없습니다.</td>
+						<td colspan="6">조회된 결과가 없습니다.</td>
 					</tr>
 				</c:otherwise>
 			</c:choose>

@@ -60,29 +60,9 @@ public class WebRestController {
 	public ModelAndView getAllPosts() {
 		
 		ModelAndView mv = new ModelAndView("postList");
-		
 		List<Posts> list = postsRepository.findAll();
-		
-		//List<Map<String, Object>> list = sampleService.selectBoardList(commandMap);
-		
-		//List<Map<String, Object>> list = postsRepository.findAll();
-		
-		
 		mv.addObject("list", list);
-		
-		return mv;
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	//	return postsRepository.findAll();
-		
+		return mv;	
 	}
 	
 	

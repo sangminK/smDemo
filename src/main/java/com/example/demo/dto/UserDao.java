@@ -58,7 +58,12 @@ public interface UserDao extends JpaRepository<User, Integer> {
 	// 2. 추가 조회 조건
 	// 2-1. salary가 N일때, name의 내림차순(desc)
 	List<User> findBySalaryOrderByNameDesc(Integer salary);
+	// 오름차순
+	List<User> findBySalaryOrderByNameAsc(Integer salary);
 	
-	// 2-2. 
+	// 2-2. status가 N일때, name의 오름차순
+	List<User> findByStatusOrderByNameAsc(Integer status);
+	// 내림차순
+	List<User> findByStatusOrderByNameDesc(Integer status);
 	
 }

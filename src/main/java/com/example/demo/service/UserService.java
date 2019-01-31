@@ -20,9 +20,14 @@ public class UserService {
         return this.userDao.findAll();
     }
     
+//    // ID로 조회
+//    public Optional<User> getUser(int id) {
+//    	return this.userDao.findById(id);
+//    }
+    
     // ID로 조회
-    public Optional<User> getUser(int id) {
-    	return this.userDao.findById(id);
+    public User getUser(int id) {
+    	return this.userDao.getOne(id);
     }
 
     // 데이터 추가
@@ -54,6 +59,19 @@ public class UserService {
     	return this.userDao.findBySalaryOrderByNameDesc(salary);
     }
     
+    public List<User> findBySalaryOrderByNameAsc(int salary) {
+    	return this.userDao.findBySalaryOrderByNameAsc(salary);
+    }
+    
+    public List<User> findByStatusOrderByNameDesc(int status) {
+    	return this.userDao.findByStatusOrderByNameDesc(status);
+    }
+    
+    public List<User> findByStatusOrderByNameAsc(int status) {
+    	return this.userDao.findByStatusOrderByNameAsc(status);
+    }
+    
+    // @Query
     public List<User> selectBySalary(int salary) {
     	return this.userDao.selectBySalary(salary);
     }
