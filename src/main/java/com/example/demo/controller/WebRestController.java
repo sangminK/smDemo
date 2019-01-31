@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,16 +28,16 @@ public class WebRestController {
 	
 	@RequestMapping(value = "/")
 	public ModelAndView root() {
-		ModelAndView mv = new ModelAndView("viewtest");
+		ModelAndView mv = new ModelAndView("menu");
 		return mv;
 	}
 	
-	@RequestMapping(value = "/test")
-	public ModelAndView test() {
-		ModelAndView mv = new ModelAndView("test/test2");
-		
-		return mv;
-	}
+//	@RequestMapping(value = "/test")
+//	public ModelAndView test() {
+//		ModelAndView mv = new ModelAndView("test/test2");
+//		
+//		return mv;
+//	}
 	
 	
 	//@RequestMapping(value="/hello", method=RequestMethod.GET)
@@ -55,9 +56,33 @@ public class WebRestController {
 	}
 	
 	// ********** read all **********************************************************
-	@GetMapping("/posts/read-all")
-	public List<Posts> getAllPosts() {
-		return postsRepository.findAll();
+	@RequestMapping("/posts/read-all")
+	public ModelAndView getAllPosts() {
+		
+		ModelAndView mv = new ModelAndView("postList");
+		
+		List<Posts> list = postsRepository.findAll();
+		
+		//List<Map<String, Object>> list = sampleService.selectBoardList(commandMap);
+		
+		//List<Map<String, Object>> list = postsRepository.findAll();
+		
+		
+		mv.addObject("list", list);
+		
+		return mv;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	//	return postsRepository.findAll();
+		
 	}
 	
 	
