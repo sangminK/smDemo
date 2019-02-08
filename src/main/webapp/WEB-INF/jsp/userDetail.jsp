@@ -47,6 +47,7 @@
 		<hr>
 
 		<input type="submit" value="수정완료" />
+		<span>현재는 salary를 수정해야 에러가 안남</span>
 
 	</form>
 

@@ -112,7 +112,7 @@ public class UserService {
 	
     
     
-    //    Not Yet
+    // 추가 3
     public List<User> findByNameLike(String searchTerm) {
     	return this.userDao.findByNameLike(searchTerm);
     }
@@ -129,5 +129,12 @@ public class UserService {
     public List<User> findByNameLikeQuery(String searchTerm) {
     	return this.userDao.findByNameLikeQuery(searchTerm);
     }
+    
+    
+    // 검색 추가
+    public List<User> searchByName(String keyword) {
+    	return this.userDao.searchByName(keyword);
+    }
+   
 
 }

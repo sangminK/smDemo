@@ -81,7 +81,7 @@ public interface UserDao extends JpaRepository<User, Integer> {
 	// between(salary)
     List<User> findBySalaryBetween(int start, int end);
     
-    @Query("SELECT u FROM User u WHERE u.salary > ?1 and u.salary < ?2")
+    @Query("SELECT u FROM User u WHERE u.salary >= ?1 and u.salary <= ?2")
     List<User> findBySalaryBetweenQuery(int start, int end);
 	
     
@@ -96,8 +96,13 @@ public interface UserDao extends JpaRepository<User, Integer> {
     List<User> getByNameContaining(String searchTerm);
     List<User> readByNameStartingWith(String searchTerm);
     
-    @Query("SELECT u FROM User u WHERE u.name like ?1")
-    List<User> findByNameLikeQuery(String searchTerm);
-    
-    
+    @Query("SELECT u FROM User u WHERE u.name like :searchTerm%")
+    List<User> findByNameLikeQuery(@Param("searchTerm") String searchTerm);
+    // @Query("SELECT u FROM User u WHERE u.name like ?1")
+
+
+    // 검색 추가
+    @Query("SELECT u FROM User u WHERE u.name like %:keyword%")
+    List<User> searchByName(@Param("keyword") String keyword);
+
 }

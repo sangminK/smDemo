@@ -10,104 +10,116 @@
 
 <body>
 
-	<h1>USERS LIST</h1>
 	<hr>
 
 	<h3>검색</h3>
+	<input type="button" value="검색 초기화" onClick="location='/user/list'" />
+	<br>
+	<br>
+
+	<!-- 키워드 검색 -->
+	<form action="/user/jsp/search">
+		<span>name 검색 :</span> &nbsp <input type="text" name="keyword"
+			placeholder="name 검색" /> <input type="submit" value="검색" />
+	</form>
+	<br>
+	<!-- *********** -->
+
+
+
 	<form action="/user/salary-search">
-		<span>salary 검색 :</span> &nbsp 
-		
-		<select name="salary">
-				<option value="1000">1000</option>
-				<option value="2000">2000</option>
-				<option value="3000">3000</option>
-				<option value="4000">4000</option>
-				<option value="5000">5000</option>
-		</select>&nbsp 
-		
-		
-		<select name="order">
+		<span>salary 검색 :</span> &nbsp <select name="salary">
+			<option value="1000">1000</option>
+			<option value="2000">2000</option>
+			<option value="3000">3000</option>
+			<option value="4000">4000</option>
+			<option value="5000">5000</option>
+		</select>&nbsp <select name="order">
 			<option value="1">이름 오름차순</option>
 			<option value="2">이름 내림차순</option>
-		</select>&nbsp 
-		
-		<input type="submit" value="검색" />
+		</select>&nbsp <input type="submit" value="검색" />
 	</form>
 
 
 	<form action="/user/status-search">
 		<span>status 검색 :</span> &nbsp <select name="status">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-		</select>&nbsp 
-		
-		<select name="order">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>&nbsp <select name="order">
 			<option value="1">이름 오름차순</option>
 			<option value="2">이름 내림차순</option>
-		</select>&nbsp 
-		
-		
-		
-		<input type="submit" value="검색" />
+		</select>&nbsp <input type="submit" value="검색" />
 	</form>
-	
-	
-	
-	
-    <form action="/user/salary-than">
-		<span>salary 이상/이하 검색 :</span> &nbsp 
-		
-		<select name="salary">
-				<option value="1000">1000</option>
-				<option value="2000">2000</option>
-				<option value="3000">3000</option>
-				<option value="4000">4000</option>
-				<option value="5000">5000</option>
-		</select>&nbsp 
-		
-		
-		<select name="order">
+
+
+
+
+	<form action="/user/salary-than">
+		<span>salary 이상/이하 검색 :</span> &nbsp <select name="salary">
+			<option value="1000">1000</option>
+			<option value="2000">2000</option>
+			<option value="3000">3000</option>
+			<option value="4000">4000</option>
+			<option value="5000">5000</option>
+		</select>&nbsp <select name="order">
 			<option value="1">이상</option>
 			<option value="2">이하</option>
-		</select>&nbsp 
-		
-		<input type="submit" value="검색" />
+		</select>&nbsp <input type="submit" value="검색" />
 	</form>
-	
-	
-	
-	
-	    <form action="/user/salary-between">
-		<span>salary 범위 검색 :</span> &nbsp 
-		
-		<select name="left">
-				<option value="1000">1000</option>
-				<option value="2000">2000</option>
-				<option value="3000">3000</option>
-				<option value="4000">4000</option>
-				<option value="5000">5000</option>
-		</select>&nbsp 
-		
-		<span> &lt; salary &lt; </span> 
-		
-		<select name="right">
-				<option value="1000">1000</option>
-				<option value="2000">2000</option>
-				<option value="3000">3000</option>
-				<option value="4000">4000</option>
-				<option value="5000">5000</option>
-		</select>&nbsp 
 
-		
-		<input type="submit" value="검색" />
+
+	<form action="/user/salary-between">
+		<span>salary 범위 검색 :</span> &nbsp <select name="left">
+			<option value="1000">1000</option>
+			<option value="2000">2000</option>
+			<option value="3000">3000</option>
+			<option value="4000">4000</option>
+			<option value="5000">5000</option>
+		</select>&nbsp <span> &lt; salary &lt; </span> <select name="right">
+			<option value="1000">1000</option>
+			<option value="2000">2000</option>
+			<option value="3000">3000</option>
+			<option value="4000">4000</option>
+			<option value="5000">5000</option>
+		</select>&nbsp <input type="submit" value="검색" />
 	</form>
-	
-	
+	<br>
+
+	<form action="/user/jsp/like">
+		<span>like :</span> &nbsp <input type="text" name=like
+			placeholder="like 검색" /> <input type="submit" value="검색" />
+	</form>
+
+
+	<form action="/user/jsp/containing">
+		<span>containing :</span> &nbsp <input type="text" name=containing
+			placeholder="containing 검색" /> <input type="submit" value="검색" />
+	</form>
+
+
+	<form action="/user/jsp/starting">
+		<span>starting :</span> &nbsp <input type="text" name=starting
+			placeholder="starting 검색" /> <input type="submit" value="검색" />
+	</form>
+
+
+	<form action="/user/jsp/likeq">
+		<span>like @Query :</span> &nbsp <input type="text" name=likeq
+			placeholder="검색어로 시작하는 단어" /> <input type="submit" value="검색" />
+	</form>
+
+
+
 
 	<hr>
+	<h3>USERS LIST</h3>
+
+	<input type="button" value="user add"
+		onClick="location='/user/addPage'" />
+	<br><br>
 
 	<table class="user_list" border="1">
 		<colgroup>
@@ -171,11 +183,7 @@
 	</table>
 	<br>
 	<!-- <input type="button" value="user add" onClick="location='/userAdd.jsp'" /> -->
-	<input type="button" value="user list"
-		onClick="location='/user/list'" />
-		
-	<input type="button" value="user add"
-		onClick="location='/user/addPage'" />
+
 
 
 
