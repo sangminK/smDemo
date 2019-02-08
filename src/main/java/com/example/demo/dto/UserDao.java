@@ -64,45 +64,35 @@ public interface UserDao extends JpaRepository<User, Integer> {
 	// 내림차순
 	List<User> findByStatusOrderByNameDesc(Integer status);
 
-	
-	
-	
-	
-	// ***** 적용 안함 ***** 
-	
+	// ***** 적용 안함 *****
+
 	// less than, greater than (salary)
 	List<User> findBySalaryGreaterThan(Integer salary);
+
 	List<User> findBySalaryLessThan(Integer salary);
 
 	@Query("SELECT u FROM User u WHERE u.salary > ?1")
 	List<User> findBySalaryGreaterThanQuery(Integer salary);
-	
-	
+
 	// between(salary)
-    List<User> findBySalaryBetween(int start, int end);
-    
-    @Query("SELECT u FROM User u WHERE u.salary >= ?1 and u.salary <= ?2")
-    List<User> findBySalaryBetweenQuery(int start, int end);
-	
-    
-    
-    
-    
-    
-    
+	List<User> findBySalaryBetween(int start, int end);
 
-    // like / containing / startingWith
-    List<User> findByNameLike(String searchTerm);
-    List<User> getByNameContaining(String searchTerm);
-    List<User> readByNameStartingWith(String searchTerm);
-    
-    @Query("SELECT u FROM User u WHERE u.name like :searchTerm%")
-    List<User> findByNameLikeQuery(@Param("searchTerm") String searchTerm);
-    // @Query("SELECT u FROM User u WHERE u.name like ?1")
+	@Query("SELECT u FROM User u WHERE u.salary >= ?1 and u.salary <= ?2")
+	List<User> findBySalaryBetweenQuery(int start, int end);
 
+	// like / containing / startingWith
+	List<User> findByNameLike(String searchTerm);
 
-    // 검색 추가
-    @Query("SELECT u FROM User u WHERE u.name like %:keyword%")
-    List<User> searchByName(@Param("keyword") String keyword);
+	List<User> getByNameContaining(String searchTerm);
+
+	List<User> readByNameStartingWith(String searchTerm);
+
+	@Query("SELECT u FROM User u WHERE u.name like :searchTerm%")
+	List<User> findByNameLikeQuery(@Param("searchTerm") String searchTerm);
+	// @Query("SELECT u FROM User u WHERE u.name like ?1")
+
+	// 검색 추가
+	@Query("SELECT u FROM User u WHERE u.name like %:keyword%")
+	List<User> searchByName(@Param("keyword") String keyword);
 
 }

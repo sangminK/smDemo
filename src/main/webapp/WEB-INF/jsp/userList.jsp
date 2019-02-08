@@ -111,15 +111,13 @@
 			placeholder="검색어로 시작하는 단어" /> <input type="submit" value="검색" />
 	</form>
 
-
-
-
 	<hr>
 	<h3>USERS LIST</h3>
 
 	<input type="button" value="user add"
 		onClick="location='/user/addPage'" />
-	<br><br>
+	<br>
+	<br>
 
 	<table class="user_list" border="1">
 		<colgroup>
@@ -183,8 +181,6 @@
 	</table>
 	<br>
 	<!-- <input type="button" value="user add" onClick="location='/userAdd.jsp'" /> -->
-
-
 
 
 	<%@ include file="/WEB-INF/include/include-body.jspf"%>
