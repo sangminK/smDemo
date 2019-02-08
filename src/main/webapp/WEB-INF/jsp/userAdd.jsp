@@ -27,6 +27,8 @@
 						<option value="1000">1000</option>
 						<option value="2000">2000</option>
 						<option value="3000">3000</option>
+						<option value="4000">4000</option>
+						<option value="5000">5000</option>
 				</select></td>
 
 
@@ -39,6 +41,8 @@
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
 				</select></td>
 			</tr>
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.User;
@@ -20,13 +21,13 @@ public class UserService {
         return this.userDao.findAll();
     }
     
-//    // ID로 조회
-//    public Optional<User> getUser(int id) {
-//    	return this.userDao.findById(id);
-//    }
+    // ID로 조회
+    public Optional<User> findById(int id) {
+    	return this.userDao.findById(id);
+    }
     
     // ID로 조회
-    public User getUser(int id) {
+    public User getOne(int id) {
     	return this.userDao.getOne(id);
     }
 
@@ -49,12 +50,19 @@ public class UserService {
     	return this.userDao.save(user);
     }
     
-    // 삭제
-    public void deleteUser(int id) {
-    	this.userDao.deleteById(id);
+    // 수정
+    public User updateStatus(int id, int status) {
+    	User user = userDao.getOne(id);
+    	user.setStatus(status);
+    	return this.userDao.save(user);
     }
     
-    // ***** 추가
+    // 삭제
+    public void deleteUser(int id) {
+    	 this.userDao.deleteById(id);
+    }
+    
+    // ***** 추가 1
     public List<User> findBySalaryOrderByNameDesc(int salary) {
     	return this.userDao.findBySalaryOrderByNameDesc(salary);
     }
@@ -78,6 +86,48 @@ public class UserService {
     
     public List<User> selectByStatus(int status) {
     	return this.userDao.selectByStatus(status);
+    }
+    
+    
+    // ***** 추가 2
+    public List<User> findBySalaryGreaterThan(int salary) {
+    	return this.userDao.findBySalaryGreaterThan(salary);
+    }
+    
+    public List<User> findBySalaryLessThan(int salary) {
+    	return this.userDao.findBySalaryLessThan(salary);
+    }
+    
+    public List<User> findBySalaryGreaterThanQuery(int salary) {
+    	return this.userDao.findBySalaryGreaterThanQuery(salary);
+    }
+	
+    public List<User> findBySalaryBetween(int start, int end) {
+    	return this.userDao.findBySalaryBetween(start, end);
+    }
+
+    public List<User> findBySalaryBetweenQuery(int start, int end) {
+    	return this.userDao.findBySalaryBetweenQuery(start, end);
+    }
+	
+    
+    
+    //    Not Yet
+    public List<User> findByNameLike(String searchTerm) {
+    	return this.userDao.findByNameLike(searchTerm);
+    }
+    
+    public List<User> getByNameContaining(String searchTerm) {
+    	return this.userDao.getByNameContaining(searchTerm);
+    }
+    
+    public List<User> readByNameStartingWith(String searchTerm) {
+    	return this.userDao.readByNameStartingWith(searchTerm);
+    }
+    
+    
+    public List<User> findByNameLikeQuery(String searchTerm) {
+    	return this.userDao.findByNameLikeQuery(searchTerm);
     }
 
 }

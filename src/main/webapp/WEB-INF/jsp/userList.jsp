@@ -18,9 +18,11 @@
 		<span>salary 검색 :</span> &nbsp 
 		
 		<select name="salary">
-			<option value="1000">1000</option>
-			<option value="2000">2000</option>
-			<option value="3000">3000</option>
+				<option value="1000">1000</option>
+				<option value="2000">2000</option>
+				<option value="3000">3000</option>
+				<option value="4000">4000</option>
+				<option value="5000">5000</option>
 		</select>&nbsp 
 		
 		
@@ -35,9 +37,11 @@
 
 	<form action="/user/status-search">
 		<span>status 검색 :</span> &nbsp <select name="status">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
 		</select>&nbsp 
 		
 		<select name="order">
@@ -49,6 +53,59 @@
 		
 		<input type="submit" value="검색" />
 	</form>
+	
+	
+	
+	
+    <form action="/user/salary-than">
+		<span>salary 이상/이하 검색 :</span> &nbsp 
+		
+		<select name="salary">
+				<option value="1000">1000</option>
+				<option value="2000">2000</option>
+				<option value="3000">3000</option>
+				<option value="4000">4000</option>
+				<option value="5000">5000</option>
+		</select>&nbsp 
+		
+		
+		<select name="order">
+			<option value="1">이상</option>
+			<option value="2">이하</option>
+		</select>&nbsp 
+		
+		<input type="submit" value="검색" />
+	</form>
+	
+	
+	
+	
+	    <form action="/user/salary-between">
+		<span>salary 범위 검색 :</span> &nbsp 
+		
+		<select name="left">
+				<option value="1000">1000</option>
+				<option value="2000">2000</option>
+				<option value="3000">3000</option>
+				<option value="4000">4000</option>
+				<option value="5000">5000</option>
+		</select>&nbsp 
+		
+		<span> &lt; salary &lt; </span> 
+		
+		<select name="right">
+				<option value="1000">1000</option>
+				<option value="2000">2000</option>
+				<option value="3000">3000</option>
+				<option value="4000">4000</option>
+				<option value="5000">5000</option>
+		</select>&nbsp 
+
+		
+		<input type="submit" value="검색" />
+	</form>
+	
+	
 
 	<hr>
 
